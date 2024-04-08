@@ -1,0 +1,37 @@
+.filter ul::-webkit-scrollbar {
+  width: 5px;
+  /* height: 10px; */
+}
+.filter ul::-webkit-scrollbar-thumb {
+  /* width: 7px; */
+  background: #ccc;
+}
+.cards Button {
+  background-color: #3bb77d;
+  width: 100%;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.cards Button:hover {
+  background-color: #fdc040;
+}
+.cards Button svg {
+  margin-right: 0.7rem;
+}
+.listing-content .product-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 0;
+}
+.listing-content .ite {
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* .sidebar-wrapper .sidebar-container {
+  position: sticky;
+  top: 200px;
+  background: #000;
+} */

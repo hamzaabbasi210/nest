@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  /* background: #0007;
+  color: white; */
+}
+.cursor {
+  cursor: pointer;
+}
+.container-fluid {
+  padding: 0 5%;
+}
+body {
+  text-transform: capitalize;
+  font-family: "Quicksand", sans-serif;
+  overflow: hidden;
+  position: relative;
+  overflow-x: hidden;
+  /* overflow-y: scroll; */
+  background: #ffffff;
+}
+
+html {
+  overflow-x: hidden;
+}
+.hd {
+  font-size: 30px;
+  font-weight: bold;
+}

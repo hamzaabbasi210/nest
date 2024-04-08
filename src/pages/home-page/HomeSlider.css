@@ -1,0 +1,85 @@
+@import url("slick-carousel/slick/slick.css");
+@import url("slick-carousel/slick/slick-theme.css");
+
+/* .newsletter button {
+    background: #3BB77E;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px 18px;
+    height: 4rem;
+    width: 10rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+} */
+.newsletter button {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px 30px;
+  color: #ffffff;
+  border: none;
+  background-color: #3bb77e;
+  /* border: 1px solid #29A56C; */
+  border-radius: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.newsletter button:hover {
+  background: #149659;
+}
+
+.slick-dots {
+  bottom: 20px;
+}
+.slick-dots li.slick-active button::before {
+  opacity: 0.75;
+  color: #3bb77e;
+  /* font-size: large;  */
+}
+.slick-dots li button:before {
+  font-size: 15px;
+}
+/* .slick-prev:before {
+   content: "\f105";
+    font-family: "Font Awesome";
+    background: #149659;
+}
+.slick-next:before {
+   content: "\f105";
+   font-family: "Font Awesome 6 Pro";
+    background: #149659;
+} */
+
+.slider-container .slick-slide {
+  /* width: 100vw !important; */
+  /* padding: 0; */
+}
+.slick-next {
+  font-family: "Font Awesome 6 Pro";
+}
+.slick-prev {
+  z-index: 1111;
+  left: 2%;
+}
+
+.slick-next:before {
+  content: "→";
+  z-index: 1111;
+  background: ffffff;
+  color: #3bb77e;
+  position: absolute;
+  right: 61px;
+  font-size: 3rem;
+}
+.slick-prev:before {
+  content: "→";
+  rotate: 180deg;
+  z-index: 111111;
+  background: ffffff;
+  color: #3bb77e;
+  position: absolute;
+  left: -10px;
+  font-size: 3rem;
+}

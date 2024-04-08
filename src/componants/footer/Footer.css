@@ -1,0 +1,35 @@
+.company-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.company-info span {
+  font-weight: 700;
+}
+.company-info svg {
+  font-size: 1.1rem;
+  color: #3bb77e;
+  display: inline-block;
+  margin-right: 10px;
+}
+.footer-content .col .hd {
+  margin: auto;
+  text-align: center;
+}
+.footer-content .col ul {
+  margin-top: 1.5rem;
+  /* border: 2px solid; */
+  /* text-align: center; */
+}
+.footer-content .col ul:nth-last-child() {
+}
+.footer-content .col ul li {
+  translate: calc(100% - 75%);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+.footer-content .footer-data {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}

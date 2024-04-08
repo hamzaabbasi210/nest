@@ -1,0 +1,28 @@
+.dropdown-container ul {
+    position: relative;
+
+}
+
+.dropdown-container ul li {
+    padding: .5rem .2rem;
+}
+
+.dropdown-container ul li.active {
+    background: #6bd1a2;
+}
+
+.dropdown-container ul li:hover {
+    background: #6bd1a2;
+}
+
+.dropdown-container::-webkit-scrollbar {
+    width: 10px !important;
+    /* background: #000; */
+    /* z-index: -1; */
+}
+
+.dropdown-container::-webkit-scrollbar-thumb {
+    background: #6bd1a2 !important;
+    /* width: 10px; */
+    /* z-index: -1; */
+}

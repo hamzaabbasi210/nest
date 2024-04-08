@@ -1,0 +1,122 @@
+.size-weight ul li button {
+  background: #ccc;
+  padding: 0 1px;
+  text-transform: capitalize;
+  height: 25px;
+  width: 25px;
+  background: transparent;
+  color: #8d8b8b;
+}
+.size-weight ul li {
+  padding: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.add-to-cart-btn button {
+  background: #3bb77d;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.add-to-cart-btn button:hover {
+  background: #329468;
+}
+.boxess button {
+  border: 1px solid #ccc;
+}
+.img-slider .slick-slide {
+  padding-right: 0rem;
+  padding: 0.5rem;
+  /* margin-right: 0.5rem; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /* border: 1px solid #3bb77d; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+.img-slider .slick-current {
+  border: 1px solid #8a8a98;
+}
+.img-slider .slick-arrow {
+  top: 40px;
+  background: ;
+}
+.img-slider .slick-next {
+  right: -70px;
+}
+.img-slider .slick-prev {
+  left: -10px;
+  top: px;
+}
+.row .col .info-tabs button{
+  border: 1px solid #e3e2e2;
+  padding: .7rem 1.4rem;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 17px;
+}
+.discription-tab p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 5px;
+  color: #7E7E7E;
+}
+.product-more-infor{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+   margin-left: 1rem;
+   /* border-bottom: 2px solid #ccc; */
+ 
+}
+.product-more-infor li {
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
+  display: flex;
+  /* gap: 2rem; */
+  /* justify-content: space-between; */
+  margin: 0 0 10px;
+  position: relative;
+}
+.product-more-infor li span {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 365px;
+  flex: 0 0 165px;
+  display: inline-block;
+}
+.product-more-infor li ::before {
+  position: absolute;
+  left: -14px;
+  top: 9px;
+  content: "";
+  height: 6px;
+  width: 6px;
+  border-radius: 100%;
+  background-color: #9b9b9b;
+}
+h4  {
+    font-family: "Quicksand", sans-serif;
+    color: #253D4E;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  vertical-align: middle;
+}table td,
+table th {
+  padding: 10px 20px;
+  border: 1px solid #ececec;
+  vertical-align: middle;
+}.contact-infor li:not(:last-child) {
+  margin-bottom: 10px;
+}

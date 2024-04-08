@@ -1,0 +1,32 @@
+.feature-product2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem , 1fr));
+    gap: 1rem;
+    /* background: #000; */
+}
+
+.cart-btn button{
+    padding: 0.5rem 1rem;
+        background-color: #ECFFEC;
+        color: #3BB77E;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+}
+.cart-btn button:hover{
+background: #3BB77E;
+color: #ECFFEC;
+}
+.product-img .img img{
+    transition: .5s ease;
+}
+.product-img:hover .img img{
+    scale: 1.1;
+}
+.featureProductCard{
+    transition: .5s ease;
+}
+.featureProductCard:hover{
+    box-shadow: #3BB77E;
+}

@@ -1,0 +1,14 @@
+.location-sec .dropdown-container {
+    left: 0 !important;
+
+}
+.account-dropdown ul li {
+    text-align: left;
+   
+}
+.account-dropdown ul li button{
+    /* color: #3BB77E !important;   */
+    color: rgb(41, 40, 40);
+    text-align: left !important;
+    margin-right: auto;
+}

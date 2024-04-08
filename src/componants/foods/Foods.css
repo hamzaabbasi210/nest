@@ -1,0 +1,12 @@
+.foods-content .box {
+  transition: all.4s ease;
+}
+.foods-content .box:hover {
+  transform: translateY(-5px);
+}
+.foods-content .box .box-img img {
+  transition: all 0.4s ease;
+}
+.foods-content .box .box-img:hover img {
+  scale: 1.1;
+}
