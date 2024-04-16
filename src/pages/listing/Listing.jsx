@@ -125,11 +125,11 @@ function ShopListing(props) {
           </div>
           <div className="listing-content ">
             <div className="row">
-              <div className="col-3 ">
+              <div className="col-3 Listing-sidebar">
                 <Sidebar filterByPrice={filterByPrice} range={true} />
               </div>
-              <div className="col-9 mt-4">
-                <div className="top-strip flex justify-between">
+              <div className="col-9 listing-Products mt-4">
+                <div className="top-strip flex justify-between flex-wrap">
                   <div className="result">
                     We found{" "}
                     <span className="text-success font-bold">
@@ -138,7 +138,7 @@ function ShopListing(props) {
                     items for you!
                   </div>
                   <div className="filter-btn flex ">
-                    <div className="tab relative">
+                    {/* <div className="tab relative">
                       <Button onClick={() => setPriceDropdown(!priceDropdown)}>
                         <BiCategory />
                         Show: 50
@@ -154,7 +154,7 @@ function ShopListing(props) {
                           </ul>
                         </div>
                       )}
-                    </div>
+                    </div> */}
                     <div className="tab relative">
                       <Button
                         onClick={() => setCategoryDropdown(!categoryDropdown)}
@@ -165,7 +165,12 @@ function ShopListing(props) {
                       {categoryDropdown === true && (
                         <div className="account-dropdown z-50 bg-[#FFFFFf] w-[90%] h-[auto] text-sm  absolute top-[100%] shadow-md right-4 py-4 ">
                           <ul className="w-full ">
-                            <li className="pb-2 pl-2  ">
+                            {Products.map((val) => {
+                              return val.items.map((val) => {
+                                return <li className="p-2">{val.cat_name}</li>;
+                              });
+                            })}
+                            {/* <li className="pb-2 pl-2  ">
                               &nbsp;&nbsp;price: low to high
                             </li>
                             <li className="pb-2 pl-2  ">
@@ -179,7 +184,7 @@ function ShopListing(props) {
                             </li>
                             <li className="pb-2 pl-2  ">
                               &nbsp;&nbsp;sign out
-                            </li>
+                            </li> */}
                           </ul>
                         </div>
                       )}
@@ -189,7 +194,7 @@ function ShopListing(props) {
                 <div className="product-box mt-6">
                   {catProductsData.map((val) => {
                     return (
-                      <div className="feature-product2  mr-6 ">
+                      <div className="feature-product2  mr-6 mt-4">
                         <Product2 value={val} />
                       </div>
                     );

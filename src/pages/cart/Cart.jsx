@@ -6,6 +6,8 @@ import "./Cart.css";
 import QuantityBox from "../../componants/quantityBox/QuantityBox";
 import { useCartContext } from "../../context/cartContext";
 import { useLoginContext } from "../../context/loginContext";
+import emptycart from "../../assets/emptycart.png";
+
 function cart() {
   const { cart, removeItems, emptyCart, increment, decrement, total_amount } =
     useCartContext();
@@ -74,6 +76,7 @@ function cart() {
                           <td>Remove</td>
                         </tr>
                       </thead>
+
                       {isLogin === "true" ? (
                         <tbody>
                           {cart.map((val, index) => {
@@ -125,20 +128,6 @@ function cart() {
                               </tr>
                             );
                           })}
-
-                          <NavLink to="/listing">
-                            <Button
-                              style={{
-                                backgroundColor: "#3BB77D",
-                                marginTop: "2rem",
-                                color: "white",
-                                fontWeight: "bold",
-                                padding: ".5rem 2rem",
-                              }}
-                            >
-                              continue shopping
-                            </Button>
-                          </NavLink>
                         </tbody>
                       ) : (
                         <>
@@ -161,6 +150,30 @@ function cart() {
                         </>
                       )}
                     </table>
+                    {isLogin === "true" && cart.length === 0 && (
+                      <>
+                        <div className="w-full py-24  flex items-center justify-center ">
+                          <img src={emptycart} alt="" className="w-52" />
+                          <h1 className="text-3xl text-red-300">
+                            your cart is empty
+                          </h1>
+                        </div>
+
+                        <NavLink to="/listing">
+                          <Button
+                            style={{
+                              backgroundColor: "#3BB77D",
+                              marginTop: "2rem",
+                              color: "white",
+                              fontWeight: "bold",
+                              padding: ".5rem 2rem",
+                            }}
+                          >
+                            continue shopping
+                          </Button>
+                        </NavLink>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -173,7 +186,9 @@ function cart() {
                     <h5 className="text-xl font-bold text-[#9e9999]">
                       subtotle
                     </h5>
-                    <h5 className="text-2xl font-bold">${total_amount}</h5>
+                    <h5 className="text-2xl font-bold">
+                      ${parseFloat(total_amount).toFixed(2)}
+                    </h5>
                   </div>
                   <div className="subtotle flex justify-between border p-2 my-4">
                     <h5 className="text-xl font-bold text-[#9e9999]">
@@ -185,7 +200,7 @@ function cart() {
                     <h5 className="text-xl font-bold text-[#9e9999]">total</h5>
 
                     <h5 className="text-2xl font-bold">
-                      ${total_amount + total_amount * 0.05}
+                      ${parseInt(total_amount + total_amount * 0.05).toFixed(2)}
                     </h5>
                   </div>
                 </div>

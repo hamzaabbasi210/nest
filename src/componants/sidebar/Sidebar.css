@@ -23,6 +23,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 0;
+  margin-right: -2rem;
 }
 .listing-content .ite {
   height: auto;

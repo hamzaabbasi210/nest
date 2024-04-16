@@ -12,7 +12,7 @@ const CartContaxt = createContext();
 
 const getLocalData = () => {
   let newCartData = localStorage.getItem("cartData");
-  if (!newCartData) {
+  if (newCartData === "undefined") {
     return [];
   } else {
     return JSON.parse(newCartData);
