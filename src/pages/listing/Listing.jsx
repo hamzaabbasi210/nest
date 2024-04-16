@@ -18,76 +18,78 @@ function ShopListing(props) {
 
   var itemArr = [];
   useEffect(() => {
-    Products.length !== 0 &&
-      Products.map((val) => {
-        if (props.single === true) {
-          if (val.cat_name.toLowerCase() === id.toLowerCase()) {
-            val.items.length !== 0 &&
-              val.items.map((val) => {
-                val.products.length !== 0 &&
-                  val.products.map((val) => {
-                    itemArr.push(val);
-                  });
-              });
-          }
-        } else if (props.single === false) {
-          val.items.map((val) => {
-            if (
-              val.cat_name.split(" ").join("-").toLowerCase() ===
-              id.split(" ").join("-").toLowerCase()
-            ) {
-              val.products.map((val) => {
-                itemArr.push({ ...val });
-              });
-            }
-          });
-        } else {
-          val.items.map((val) => {
-            val.products.map((val) => {
-              itemArr.push(val);
+    Products.map((val) => {
+      if (props.single === true) {
+        if (val.cat_name.toLowerCase() === id.toLowerCase()) {
+          val.items.length !== 0 &&
+            val.items.map((val) => {
+              val.products.length !== 0 &&
+                val.products.map((val) => {
+                  itemArr.push(val);
+                });
             });
-          });
         }
-      });
+      } else if (props.single === false) {
+        val.items.map((val) => {
+          if (
+            val.cat_name.split(" ").join("-").toLowerCase() ===
+            id.split(" ").join("-").toLowerCase()
+          ) {
+            val.products.map((val) => {
+              itemArr.push({ ...val });
+            });
+          }
+        });
+      } else {
+        val.items.map((val) => {
+          val.products.map((val) => {
+            itemArr.push(val);
+          });
+        });
+      }
+    });
     const list2 = itemArr.filter(
       (item, index) => itemArr.indexOf(item) === index
     );
     setCatProductsData(list2);
-  }, [id]);
+  }, [props.single, id, Products]);
 
   const filterByPrice = (minValue, maxValue) => {
-    Products.map((val) => {
-      if (val.cat_name.toLowerCase() === id.toLowerCase()) {
-        val.items.map((val) => {
-          val.products.map((val) => {
-            let price = parseInt(val.price.toString().replace(/,/g, ""));
-            console.log(price);
-            if (minValue <= price && maxValue >= price) {
-              itemArr.push(val);
-            }
-          });
-        });
-      } else {
-        val.items.length !== 0 &&
-          val.items.map((item_, index_) => {
-            if (
-              item_.cat_name.split(" ").join("-").toLowerCase() ==
-              id.split(" ").join("-").toLowerCase()
-            ) {
-              item_.products.map((product) => {
-                let price = parseInt(
-                  product.price.toString().replace(/,/g, "")
-                );
-                if (minValue <= price && maxValue >= price) {
-                  itemArr.push({
-                    ...product,
-                  });
-                }
-              });
-            }
-          });
-      }
-    });
+    Products.length !== 0 &&
+      Products.map((val) => {
+        if (val.cat_name.toLowerCase() === id.toLowerCase()) {
+          val.items.length !== 0 &&
+            val.items.map((val) => {
+              val.products.length !== 0 &&
+                val.products.map((val) => {
+                  let price = parseInt(val.price.toString().replace(/,/g, ""));
+                  console.log(price);
+                  if (minValue <= price && maxValue >= price) {
+                    itemArr.push(val);
+                  }
+                });
+            });
+        } else {
+          val.items.length !== 0 &&
+            val.items.map((item_, index_) => {
+              if (
+                item_.cat_name.split(" ").join("-").toLowerCase() ==
+                id.split(" ").join("-").toLowerCase()
+              ) {
+                item_.products.map((product) => {
+                  let price = parseInt(
+                    product.price.toString().replace(/,/g, "")
+                  );
+                  if (minValue <= price && maxValue >= price) {
+                    itemArr.push({
+                      ...product,
+                    });
+                  }
+                });
+              }
+            });
+        }
+      });
     const list2 = itemArr.filter(
       (item, index) => itemArr.indexOf(item) === index
     );
@@ -192,18 +194,6 @@ function ShopListing(props) {
                       </div>
                     );
                   })}
-
-                  {/* {catProductsData.map((val) => {
-                    return val.items.map((val) => {
-                      return val.products.map((val) => {
-                        return (
-                          <div key={val.id} className="feature-product2  mr-6 ">
-                            <Product2 value={catProductsData} />;
-                          </div>
-                        );
-                      });
-                    });
-                  })} */}
                 </div>
               </div>
             </div>

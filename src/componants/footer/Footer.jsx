@@ -17,7 +17,7 @@ function Footer() {
         <div className="container-fluid">
           <div className="footer-content">
             <div className="row footer-data ">
-              <div className="col  ">
+              <div className="footer-col mt-4  ">
                 <div className="img">
                   <img src={logo} alt="" />
                 </div>
@@ -41,7 +41,7 @@ function Footer() {
                   </h1>
                 </div>
               </div>
-              <div className="col">
+              <div className="footer-col mt-4">
                 <div className="hd">Account</div>
                 <div className="links">
                   <ul>
@@ -66,7 +66,7 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="col">
+              <div className="footer-col mt-4">
                 <div className="hd">Company</div>
                 <div className="links">
                   <ul>
@@ -91,7 +91,7 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="col">
+              <div className="footer-col mt-4">
                 <div className="hd">Corporate</div>
                 <div className="links">
                   <ul>
@@ -116,7 +116,7 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="col">
+              <div className="footer-col mt-4">
                 <div className="hd">Popular</div>
                 <div className="links">
                   <ul>
@@ -141,7 +141,7 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="col">
+              <div className="footer-col mt-4">
                 <div className="hd">Install App</div>
                 <div className="links mt-4">
                   <p>From App Store or Google Play</p>

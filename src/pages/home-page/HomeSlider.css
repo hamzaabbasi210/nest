@@ -1,18 +1,6 @@
 @import url("slick-carousel/slick/slick.css");
 @import url("slick-carousel/slick/slick-theme.css");
 
-/* .newsletter button {
-    background: #3BB77E;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 12px 18px;
-    height: 4rem;
-    width: 10rem;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    right: 0;
-} */
 .newsletter button {
   font-size: 16px;
   font-weight: 500;
@@ -25,6 +13,14 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+.inp-bttn button {
+  font-size: 5px;
+  font-weight: 500;
+  color: #ffffff !important;
+  border: none;
+  background-color: #3bb77e;
+  display: none;
 }
 .newsletter button:hover {
   background: #149659;
@@ -41,20 +37,9 @@
 .slick-dots li button:before {
   font-size: 15px;
 }
-/* .slick-prev:before {
-   content: "\f105";
-    font-family: "Font Awesome";
-    background: #149659;
-}
-.slick-next:before {
-   content: "\f105";
-   font-family: "Font Awesome 6 Pro";
-    background: #149659;
-} */
 
-.slider-container .slick-slide {
-  /* width: 100vw !important; */
-  /* padding: 0; */
+.slick-slide {
+  padding-right: 0 !important;
 }
 .slick-next {
   font-family: "Font Awesome 6 Pro";
@@ -82,4 +67,74 @@
   position: absolute;
   left: -10px;
   font-size: 3rem;
+}
+
+@media (max-width: 992px) {
+  .slide-items .slide-info h1 {
+    font-size: 1.5rem;
+  }
+  .slide-items .slide-info p {
+    font-size: 0.7rem;
+    margin: 0 !important;
+  }
+  .newsletter {
+    margin-top: 0;
+    width: 18rem;
+  }
+  .newsletter input {
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+    font-size: 12px;
+  }
+  .newsletter svg {
+    font-size: 1rem;
+  }
+  .newsletter button {
+    padding: 10px 17px;
+    font-size: 12px;
+  }
+  .slick-dots li button:before {
+    /* font-size: 10px; */
+    top: 12px;
+  }
+  .slider-container {
+    margin: 5rem 0 0 !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .slide-items .slide-info h1 {
+    font-size: 1rem;
+  }
+  .newsletter {
+    margin-top: 0;
+    width: 12rem;
+  }
+  .newsletter input {
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    font-size: 10px;
+  }
+  .newsletter svg {
+    font-size: 0.7rem;
+  }
+  .newsletter button {
+    padding: 7px 10px;
+    font-size: 8px;
+  }
+  .slide-items .slide-info p {
+    line-height: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* .slider-container {
+    margin: 0 !important;
+  } */
+  .newsletter input {
+    display: none;
+  }
+  .inp-bttn button {
+    display: block;
+  }
 }

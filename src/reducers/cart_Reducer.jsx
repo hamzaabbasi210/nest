@@ -1,9 +1,30 @@
 function cart_Reducer(state, action) {
   if (action.type === "ADD_TO_CART") {
-    return {
-      ...state,
-      cart: [...state.cart, action.payload],
-    };
+    let existingProduct = state.cart.find(
+      (curElem) => curElem.id === action.payload.id
+    );
+    if (existingProduct) {
+      let updateQuantity = state.cart.map((val) => {
+        if (val.id === action.payload.id) {
+          let newQty = val.quantity + 1;
+          return {
+            ...val,
+            quantity: newQty,
+          };
+        } else {
+          return val;
+        }
+      });
+      return {
+        ...state,
+        cart: updateQuantity,
+      };
+    } else {
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+    }
   }
   if (action.type === "REMOVE_ITEMS") {
     let updatedCart = state.cart.filter(
@@ -23,7 +44,7 @@ function cart_Reducer(state, action) {
   if (action.type === "INCREMENT") {
     let updateQty = state.cart.map((curElem) => {
       if (curElem.id === action.payload) {
-        console.log(curElem);
+        // console.log(curElem);
         const newQuantity = curElem.quantity + 1;
         return {
           ...curElem,
@@ -41,7 +62,7 @@ function cart_Reducer(state, action) {
   if (action.type === "DECREMENT") {
     let updateQty = state.cart.map((curElem) => {
       if (curElem.id === action.payload) {
-        console.log(curElem);
+        // console.log(curElem);
         const newQuantity = curElem.quantity - 1;
         return {
           ...curElem,

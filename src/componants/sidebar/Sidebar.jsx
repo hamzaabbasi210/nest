@@ -6,7 +6,7 @@ import Checkbox from "@mui/material/Checkbox";
 import "./Sidebar.css";
 import { Button } from "@mui/material";
 import { FiFilter } from "react-icons/fi";
-import banner from "../../assets/banner4.jpg";
+import banner from "../../assets/banner-4.png";
 import { useProductContext } from "../../context/productContext";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";

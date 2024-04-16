@@ -9,8 +9,9 @@ import { categoryData } from "../categoryData";
 import { useState, useEffect, useRef } from "react";
 import { useProductContext } from "../../context/productContext";
 import Dropdown from "../SelectDropdown/Dropdown";
+import { FaAngleLeft } from "react-icons/fa6";
 
-function Nav() {
+function Nav({ openNav, closenav }) {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [catDropdownIndex, setCatDropdownIndex] = useState(null);
 
@@ -30,12 +31,15 @@ function Nav() {
 
   return (
     <>
+      {openNav == true && (
+        <div className="nav-overlay" onClick={closenav}></div>
+      )}
       <div
         className="nav-container container-fluid relative border-t-2 border-b-2"
         ref={navRef}
       >
         <div className="row justify-content-start relative">
-          <div className="col-3 category-btn borde p-0 flex items-center relative">
+          <div className="col-3 nav-part1 category-btn borde p-0 flex items-center relative">
             <Button
               className=""
               onClick={() => setCategoryDropdown(!categoryDropdown)}
@@ -69,7 +73,24 @@ function Nav() {
               </div>
             )}
           </div>
-          <div className="col-7 navigation-menu borde cursor flex items-center justify-cente   text-base text-black ">
+          <div
+            onClick={closenav}
+            className={`col-7 nav-part2 navigation-menu borde cursor flex items-center justify-cente text-base text-black 
+            ${openNav ? "nav-part2-mobile" : ""}
+            `}
+          >
+            {openNav ? (
+              <FaAngleLeft
+                style={{
+                  position: "absolute",
+                  top: "5%",
+                  left: "5%",
+                  fontSize: "1.5rem",
+                }}
+              />
+            ) : (
+              ""
+            )}
             <Button>
               <NavLink
                 exact="true"
@@ -81,7 +102,7 @@ function Nav() {
                 home
               </NavLink>
             </Button>
-            <ul className="flex ">
+            <ul className="flex  categories-nav-menu">
               {Products.map((val, index) => {
                 return (
                   <>
@@ -199,7 +220,7 @@ function Nav() {
               </NavLink>
             </Button>
           </div>
-          <div className="col-2 borde flex items-center justify-center gap-3">
+          <div className="col-2 nav-part3 borde flex items-center justify-center gap-3">
             <FaHeadset className="text-4xl opacity-55" />
             <div className="content flex flex-col items-center justify-center leading-3">
               <h1 className="text-3xl font-bold text-[#3BB77D]">1900 - 888</h1>

@@ -8,11 +8,11 @@ import { BsSend } from "react-icons/bs";
 
 function HomeSlider() {
   var settings = {
-    dots: true,
+    dots: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     // centerMode: true,
     autoplay: true,
     autoplaySpeed: 3500,
@@ -38,11 +38,14 @@ function HomeSlider() {
                   <input
                     type="text"
                     placeholder="your email address"
-                    className="w-full py-3 pl-12 rounded-full border-none outline-none"
+                    className="w-full py-3 pl-12 rounded-full border-none outline-none "
                   />
                   <div className="inp-btn">
                     <Button className="rounded-">subscribe</Button>
                   </div>
+                </div>
+                <div className="inp-bttn ">
+                  <Button>subscribe</Button>
                 </div>
               </div>
             </div>
@@ -66,6 +69,9 @@ function HomeSlider() {
                   <div className="inp-btn">
                     <Button className="rounded-">subscribe</Button>
                   </div>
+                </div>
+                <div className="inp-bttn ">
+                  <Button>subscribe</Button>
                 </div>
               </div>
             </div>

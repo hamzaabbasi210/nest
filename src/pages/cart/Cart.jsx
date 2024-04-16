@@ -5,13 +5,14 @@ import { FaRegTrashAlt, FaLongArrowAltRight } from "react-icons/fa";
 import "./Cart.css";
 import QuantityBox from "../../componants/quantityBox/QuantityBox";
 import { useCartContext } from "../../context/cartContext";
+import { useLoginContext } from "../../context/loginContext";
 function cart() {
-  const { cart,removeItems, emptyCart, increment , decrement, total_amount } = useCartContext();
-console.log(typeof(total_amount))
-
-const removeItem = (id)=>{
-removeItems(id)
-}
+  const { cart, removeItems, emptyCart, increment, decrement, total_amount } =
+    useCartContext();
+  const { isLogin } = useLoginContext();
+  const removeItem = (id) => {
+    removeItems(id);
+  };
 
   return (
     <>
@@ -31,17 +32,33 @@ removeItems(id)
                 </li>
               </ol>
             </nav>
-            
           </div>
           <div className="row mt-8 mb-56">
             <div className="top flex justify-between">
               <div className="cart-heading">
-            <div className="hd">your cart</div>
-            <p>There are <span className="text-[#3BB77D] font-bold"> {cart.length}</span> products in your cart</p>
+                <div className="hd">your cart</div>
+                <p>
+                  There are{" "}
+                  <span className="text-[#3BB77D] font-bold">
+                    {" "}
+                    {cart.length}
+                  </span>{" "}
+                  products in your cart
+                </p>
               </div>
               <div className="clear-cart-btn">
-              <Button style={{backgroundColor:'#3BB77D',color:'white', fontWeight:'bold', padding:'.7rem 2rem'}} onClick={emptyCart}>Clear cart</Button>
-            </div>
+                <Button
+                  style={{
+                    backgroundColor: "#3BB77D",
+                    color: "white",
+                    fontWeight: "bold",
+                    padding: ".7rem 2rem",
+                  }}
+                  onClick={emptyCart}
+                >
+                  Clear cart
+                </Button>
+              </div>
             </div>
             <div className="col-8">
               <div className="cart-left-container">
@@ -57,57 +74,98 @@ removeItems(id)
                           <td>Remove</td>
                         </tr>
                       </thead>
-                      <tbody>
-                        {cart.map((val, index) => {
-                          return (
-                            <tr>
-                              <td>
-                                <div className="table-items flex item-center gap-8">
-                                  <div className="img border rounded">
-                                    <img
-                                      src={val.catImg}
-                                      alt=""
-                                      className="w-24 aspect-square "
-                                    />
+                      {isLogin === "true" ? (
+                        <tbody>
+                          {cart.map((val, index) => {
+                            // console.log(val);
+                            return (
+                              <tr>
+                                <td>
+                                  <div className="table-items flex item-center gap-8">
+                                    <div className="img border rounded">
+                                      <img
+                                        src={val.catImg}
+                                        alt=""
+                                        className="w-24 aspect-square "
+                                      />
+                                    </div>
+                                    <div className="table-info">
+                                      <h4 className="text-lg">
+                                        <NavLink
+                                          to={`/singleProduct/${val.id}`}
+                                        >
+                                          {val.productName}
+                                        </NavLink>{" "}
+                                      </h4>
+                                      <Rating value={parseInt(val.rating)} />
+                                    </div>
                                   </div>
-                                  <div className="table-info">
-                                    <h4 className="text-lg">
-                                      <NavLink to={`/singleProduct/${val.id}`}>
-                                        {val.productName}
-                                      </NavLink>{" "}
-                                    </h4>
-                                    <Rating value={parseInt(val.rating)} />
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                $ {parseInt(val.price.split(",").join(""))}
-                              </td>
-                              <td>
-                                <QuantityBox
-                                  // amount={amount}
-                                  quantitty={val.quantity}
-                                  setIncrese={()=>increment(val.id)}
-                                  setDecrese={()=>decrement(val.id)}
-                                />
-                              </td>
-                              {/* <td>${totalPrice.toFixed(2)}</td> */}
-                              <td>${val.price.split(',').join('') * val.quantity }</td>
-                              <td>
-                                <FaRegTrashAlt  onClick={()=>removeItem(val.id)}/>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                        <NavLink to='/listing'>
-                        <Button style={{backgroundColor:'#3BB77D', marginTop:'2rem', color:'white', fontWeight:'bold', padding:'.5rem 2rem'}}>continue shopping</Button>
-                        </NavLink>
-                      </tbody>
+                                </td>
+                                <td>
+                                  $ {parseInt(val.price.split(",").join(""))}
+                                </td>
+                                <td>
+                                  <QuantityBox
+                                    // amount={amount}
+                                    quantitty={val.quantity}
+                                    setIncrese={() => increment(val.id)}
+                                    setDecrese={() => decrement(val.id)}
+                                  />
+                                </td>
+                                {/* <td>${totalPrice.toFixed(2)}</td> */}
+                                <td>
+                                  $
+                                  {val.price.split(",").join("") * val.quantity}
+                                </td>
+                                <td>
+                                  <FaRegTrashAlt
+                                    onClick={() => removeItem(val.id)}
+                                  />
+                                </td>
+                              </tr>
+                            );
+                          })}
+
+                          <NavLink to="/listing">
+                            <Button
+                              style={{
+                                backgroundColor: "#3BB77D",
+                                marginTop: "2rem",
+                                color: "white",
+                                fontWeight: "bold",
+                                padding: ".5rem 2rem",
+                              }}
+                            >
+                              continue shopping
+                            </Button>
+                          </NavLink>
+                        </tbody>
+                      ) : (
+                        <>
+                          <div className="mt-8 font-bold text-4xl  flex flex-col text-red-400">
+                            login to access the cart itemss
+                            <NavLink to="/signin">
+                              <Button
+                                style={{
+                                  backgroundColor: "#3BB77D",
+                                  marginTop: "2rem",
+                                  color: "white",
+                                  fontWeight: "bold",
+                                  padding: ".5rem 2rem",
+                                }}
+                              >
+                                log in{" "}
+                              </Button>
+                            </NavLink>
+                          </div>
+                        </>
+                      )}
                     </table>
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="col-4 h-max border p-4 rounded">
               <div className="cart-right-container">
                 <div className="checkout-info border">
@@ -125,10 +183,10 @@ removeItems(id)
                   </div>
                   <div className="subtotle flex justify-between border p-2">
                     <h5 className="text-xl font-bold text-[#9e9999]">total</h5>
-                  
 
-                    <h5 className="text-2xl font-bold">${(total_amount + (total_amount * 0.05))}</h5>
-                    
+                    <h5 className="text-2xl font-bold">
+                      ${total_amount + total_amount * 0.05}
+                    </h5>
                   </div>
                 </div>
                 <Button

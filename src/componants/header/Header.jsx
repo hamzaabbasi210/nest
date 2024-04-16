@@ -7,7 +7,7 @@ import axios from "axios";
 import "./Header.css";
 import compare from "../../assets/icon-compare.svg";
 import heart from "../../assets/icon-heart.svg";
-import cart from "../../assets/icon-cart.svg";
+import carrt from "../../assets/icon-cart.svg";
 import user from "../../assets/icon-user.svg";
 import { BiUser } from "react-icons/bi";
 import Button from "@mui/material/Button";
@@ -17,10 +17,19 @@ import { PiSignOut } from "react-icons/pi";
 import ClickAwayListener from "react-click-away-listener";
 import { useCartContext } from "../../context/cartContext";
 import { NavLink } from "react-router-dom";
+import { useLoginContext } from "../../context/loginContext";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdClose } from "react-icons/md";
+import Nav from "../nav/Nav";
 
 function Header() {
   const [accountDropdown, setAccountDropdown] = useState(false);
   const { cart } = useCartContext();
+  const { isLogin, SignOut } = useLoginContext();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [serchOpen, setSerchOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+
   const [categories, setCategories] = useState([
     "All categories",
     "Dairy Milk",
@@ -56,19 +65,60 @@ function Header() {
       console.log(error.message);
     }
   };
-
+  const closeNav = () => {
+    setNavOpen(false);
+  };
   return (
     <>
-      <header className="container-fluid flex justify-between item-center gap-7  py-4 m-auto w-full px-8 boder ">
+      <header className="container-fluid  bg-white flex justify-between item-center gap-7  py-4 m-auto w-full px-8 boder ">
         <div className="header-logo">
-          <img src={logo} alt="" className="w-40" />
+          <NavLink to="/">
+            <img src={logo} alt="" className="w-[10rem] !important" />
+          </NavLink>
         </div>
-        <div className="header-search flex items-center box-border  gap- w-[40%] h-[45px] border ml-auto border-green-200 px- bg-[#cc] relative">
-          <Dropdown
-            categoriesItems={categories}
-            placeholder={"all categories"}
-          />
-          <span className="mx-4">|</span>
+        <div className=" header-mobile-icons-container hidden">
+          <div className="header-mobile-icons flex items-center flex-row-reverse borer h-[45px] gap-6 ml-auto font-thin ">
+            {navOpen === true ? (
+              <MdClose
+                onClick={() => setNavOpen(false)}
+                style={{ zIndex: "11114 !important" }}
+              />
+            ) : (
+              <GiHamburgerMenu onClick={() => setNavOpen(true)} />
+            )}
+            <IoSearchOutline onClick={() => setSerchOpen(true)} />
+            <NavLink to="/cart">
+              <div className="cart-icon flex items-center justify-center relative gap-2 ">
+                <img src={carrt} alt="" className="w-5 " />
+                <div className="absolute flex items-center justify-center left-2 -top-2 bg-[#3BB77E]  rounded-full text-white text-center font-bold w-6 h-6">
+                  {cart.length}
+                </div>
+                {/* <span>cart</span> */}
+              </div>
+            </NavLink>
+          </div>
+        </div>
+
+        <div
+          className={`header-search flex items-center box-border  gap- w-[40%] h-[45px] border ml-auto border-green-200 px- bg-[#cc] relative ${
+            serchOpen === true ? "header-search-mobile" : "header-search"
+          }`}
+        >
+          {serchOpen === true && (
+            <div className="search-close">
+              <MdClose
+                onClick={() => setSerchOpen(false)}
+                style={{ fontSize: "1.4rem" }}
+              />
+            </div>
+          )}
+          <div className="dropDown">
+            <Dropdown
+              categoriesItems={categories}
+              placeholder={"all categories"}
+            />
+          </div>
+          <span className="mx-4 divider">|</span>
           <div className="inp-box w-[85%] flex items-center z-20">
             <input
               type="search"
@@ -79,7 +129,18 @@ function Header() {
               <IoSearchOutline />
             </div>
           </div>
+          {windowWidth < 992 && (
+            <div className="location-sec shadow-md w-[200px] max-h-[45px] flex items-center  gap-5 pl-8 relative text-center">
+              <FaLocationDot />
+              <Dropdown
+                className="dropDown text-[#3BB77E]"
+                categoriesItems={countryList}
+                placeholder={"location"}
+              />
+            </div>
+          )}
         </div>
+
         <div className="location-sec shadow-md w-[200px] max-h-[45px] flex items-center  gap-5 pl-8 relative text-center">
           <FaLocationDot />
           <Dropdown
@@ -106,64 +167,78 @@ function Header() {
           </div>
           <NavLink to="/cart">
             <div className="cart-icon flex items-center justify-center relative gap-2 ">
-              <img src={cart} alt="" className="w-5 " />
+              <img src={carrt} alt="" className="w-5 " />
               <div className="absolute flex items-center justify-center left-2 -top-2 bg-[#3BB77E]  rounded-full text-white text-center font-bold w-6 h-6">
                 {cart.length}
               </div>
               <span>cart</span>
             </div>
           </NavLink>
-          <ClickAwayListener onClickAway={() => setAccountDropdown(false)}>
-            <div
-              className="user-icon flex items-center justify-center sticky gap-2 z-50 "
-              onClick={() => setAccountDropdown(!accountDropdown)}
-            >
-              <img src={user} alt="" className="w-5 " />
-              {/* <span className="absolute flex items-center justify-center left-2 -top-2 bg-[#3BB77E] w-4 rounded-full text-white text-center h-4">
-                0
-              </span> */}
-              <span>account</span>
 
-              {accountDropdown === true && (
-                <div className="account-dropdown z-50 bg-[#FFFFFf] w-[200px] h-[auto]  absolute top-[200%] shadow-md right-0 py-4 ">
-                  <ul className="w-full ">
-                    <li className="pb-2 pl-2  ">
-                      <Button className="" variant="text">
-                        <BiUser />
-                        &nbsp;&nbsp;my account
-                      </Button>
-                    </li>
-                    <li className="pb-2 pl-2  ">
-                      <Button className="" variant="text">
-                        <FaLocationDot />
-                        &nbsp;&nbsp;order tracking
-                      </Button>
-                    </li>
-                    <li className="pb-2 pl-2  ">
-                      <Button className="" variant="text">
-                        <CiHeart />
-                        &nbsp;&nbsp;my wishlist
-                      </Button>
-                    </li>
-                    <li className="pb-2 pl-2  ">
-                      <Button className="" variant="text">
-                        <IoSettingsOutline />
-                        &nbsp;&nbsp;setting
-                      </Button>
-                    </li>
-                    <li className="pb-2 pl-2  ">
-                      <Button className="" variant="text">
-                        <PiSignOut />
-                        &nbsp;&nbsp;sign out
-                      </Button>
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          </ClickAwayListener>
+          {isLogin === "true" ? (
+            <ClickAwayListener onClickAway={() => setAccountDropdown(false)}>
+              <div
+                className="user-icon flex items-center justify-center sticky gap-2 z-50 "
+                onClick={() => setAccountDropdown(!accountDropdown)}
+              >
+                <img src={user} alt="" className="w-5 " />
+
+                <span>account</span>
+
+                {accountDropdown === true && (
+                  <div className="account-dropdown z-50 bg-[#FFFFFf] w-[200px] h-[auto]  absolute top-[200%] shadow-md right-0 py-4 ">
+                    <ul className="w-full ">
+                      <li className="pb-2 pl-2  ">
+                        <Button className="" variant="text">
+                          <BiUser />
+                          &nbsp;&nbsp;my account
+                        </Button>
+                      </li>
+                      <li className="pb-2 pl-2  ">
+                        <Button className="" variant="text">
+                          <FaLocationDot />
+                          &nbsp;&nbsp;order tracking
+                        </Button>
+                      </li>
+                      <li className="pb-2 pl-2  ">
+                        <Button className="" variant="text">
+                          <CiHeart />
+                          &nbsp;&nbsp;my wishlist
+                        </Button>
+                      </li>
+                      <li className="pb-2 pl-2  ">
+                        <Button className="" variant="text">
+                          <IoSettingsOutline />
+                          &nbsp;&nbsp;setting
+                        </Button>
+                      </li>
+                      <li className="pb-2 pl-2  ">
+                        <Button className="" variant="text" onClick={SignOut}>
+                          <PiSignOut />
+                          &nbsp;&nbsp;sign out
+                        </Button>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </ClickAwayListener>
+          ) : (
+            <NavLink to="/signin">
+              <Button
+                style={{
+                  backgroundColor: "#3BB77D",
+                  color: "#fff",
+                  fontWeight: "bold",
+                }}
+              >
+                sign In
+              </Button>
+            </NavLink>
+          )}
         </div>
       </header>
+      <Nav openNav={navOpen} closenav={closeNav} />
     </>
   );
 }

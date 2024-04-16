@@ -33,3 +33,9 @@ html {
   font-size: 30px;
   font-weight: bold;
 }
+
+img,
+video {
+  /* max-width: max-content; */
+  height: auto;
+}

@@ -24,7 +24,7 @@
 }
 .footer-content .col ul:nth-last-child() {
 }
-.footer-content .col ul li {
+.footer-content col ul li {
   translate: calc(100% - 75%);
   margin-top: 1rem;
   font-weight: 500;

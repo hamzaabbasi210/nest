@@ -12,6 +12,7 @@ function Dropdown({ categoriesItems, placeholder }) {
   const selectCategori = (val, index) => {
     setSelectedCategori(val);
     setBgActive(index);
+    setDropdown(!dropdown);
   };
 
   return (

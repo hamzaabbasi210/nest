@@ -12,13 +12,15 @@ import SingleProduct from "./pages/single-Product-Page/SingleProduct";
 import Contact from "./pages/contact us/Contact";
 import Blog from "./pages/blog/Blog";
 import Cart from "./pages/cart/Cart";
+import SignIn from "./pages/sign_in/SignIn";
+import SignUp from "./pages/sign_up/SignUp";
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <BrowserRouter>
       <Header />
-      <Nav />
+      {/* <Nav /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cat/:id" element={<ShopListing single={true} />} />
@@ -29,6 +31,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="blog" element={<Blog />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       <FooterBnner />
       <Footer />

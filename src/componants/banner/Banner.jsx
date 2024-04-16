@@ -7,22 +7,29 @@ function Banner() {
     <>
       <div className="banner-container">
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-4 rounded-md overflow-hidden">
+          <div
+            className="row  "
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit , minmax(15rem, 1fr))",
+              gap: "1rem",
+            }}
+          >
+            <div className=" rounded-md overflow-hidden">
               <img
                 src={banner1}
                 alt=""
                 className="w-full rounded-md hover:scale-105 transition-all"
               />
             </div>
-            <div className="col-4 rounded overflow-hidden">
+            <div className=" rounded overflow-hidden">
               <img
                 src={banner2}
                 alt=""
                 className="w-full rounded-md hover:scale-105 transition-all"
               />
             </div>
-            <div className="col-4 rounded overflow-hidden">
+            <div className=" rounded overflow-hidden">
               <img
                 src={banner3}
                 alt=""

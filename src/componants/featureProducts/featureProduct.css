@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+  .heading-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .heading-content ul {
+    flex-wrap: wrap;
+  }
+  .heading-content ul li {
+    font-size: 10px;
+  }
+}

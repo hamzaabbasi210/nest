@@ -5,10 +5,14 @@ import "./index.css";
 import App from "./App";
 import { AppProvider } from "./context/productContext";
 import { CartProvider } from "./context/cartContext";
+import { LoginProvider } from "./context/loginContext";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AppProvider>
     <CartProvider>
-      <App />
+      <LoginProvider>
+        <App />
+      </LoginProvider>
     </CartProvider>
   </AppProvider>
 );

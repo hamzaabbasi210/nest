@@ -3,7 +3,7 @@ import React from "react";
 import { useProductContext } from "../../context/productContext";
 import Product2 from "../product2/Product2";
 import { NavLink } from "react-router-dom";
-
+import "./featureProduct.css";
 function FeatureProduct() {
   const {
     isLoading,
@@ -62,15 +62,6 @@ function FeatureProduct() {
             </div>
           </div>
           <div className="feature-product2  mt-12">
-            {/* {featureProducts.map((val) => {
-              return val.map((val) => {
-                return (
-                  <div key={val.id}>
-                    <Product2 tag={"hot"} value={val} />
-                  </div>
-                );
-              });
-            })} */}
             {showProducts === 1 &&
               dalsAndPulses.map((val) => {
                 return val.products.map((val) => {

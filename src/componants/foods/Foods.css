@@ -10,3 +10,10 @@
 .foods-content .box .box-img:hover img {
   scale: 1.1;
 }
+.food-container .food-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+.food-content .hd {
+  font-size: 1.5rem;
+}

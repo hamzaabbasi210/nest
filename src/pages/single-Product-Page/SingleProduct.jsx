@@ -15,11 +15,12 @@ import Slider from "react-slick";
 import { useProductContext } from "../../context/productContext";
 import axios from "axios";
 import { useCartContext } from "../../context/cartContext";
+import QuantityBox from "../../componants/quantityBox/QuantityBox";
 
 const Api = "http://localhost:3000/productData";
 function SingleProduct() {
   const { getSingleProduct, singleProduct } = useProductContext();
-  const {addToCart} = useCartContext()
+  const { addToCart, increment, decrement } = useCartContext();
   const { id } = useParams();
 
   const [curProduct, setCurProduct] = useState({});
@@ -37,8 +38,6 @@ function SingleProduct() {
     date: "",
   });
 
- 
-
   useEffect(() => {
     window.scrollTo(0, 0);
     singleProduct.map((val) => {
@@ -51,22 +50,7 @@ function SingleProduct() {
         });
       });
     });
-  }, [ '']);
-
-  const increment = () => {
-    if (inpVal < 10) {
-      setInpVal(inpVal + 1);
-    }
-    if (inpVal === 10) {
-      alert("you can order once only 10 pieces");
-    }
-  };
-
-  const decrement = () => {
-    if (inpVal > 0) {
-      setInpVal(inpVal - 1);
-    }
-  };
+  }, [id]);
 
   var settings = {
     dots: false,
@@ -135,9 +119,11 @@ function SingleProduct() {
       date: new Date().toLocaleString(),
     }));
   };
-  const addTooCart = (product) =>{
-addToCart(product)
-  }
+  const addTooCart = (product) => {
+    product.quantity += 1;
+    addToCart(product);
+  };
+  console.log(curProduct);
   return (
     <>
       <div className="single-product-container  mb-56">
@@ -191,8 +177,6 @@ addToCart(product)
                           ))}
                       </Slider>
                     </div>
-
-                    
                   </div>
 
                   <div className="col-8 px-12">
@@ -256,13 +240,18 @@ addToCart(product)
                             onChange={(e) => setInpVal(e.target.value)}
                           />
                           <div className="arrows flex flex-col items-center justify-center">
-                            <FaAngleUp onClick={increment} />
-                            <FaAngleDown onClick={decrement} />
+                            {/* <FaAngleUp onClick={increment} />
+                            <FaAngleDown onClick={decrement} /> */}
+                            <QuantityBox
+                              quantitty={curProduct.quantity}
+                              setIncrese={() => increment(curProduct.id)}
+                              setDecrese={() => decrement(curProduct.id)}
+                            />
                           </div>
                         </div>
                         <div className="add-to-cart-btn">
                           <NavLink to="/cart">
-                            <Button onClick={()=>addTooCart(curProduct)}>
+                            <Button onClick={() => addTooCart(curProduct)}>
                               add to cart
                             </Button>
                           </NavLink>

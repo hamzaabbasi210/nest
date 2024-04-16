@@ -1,0 +1,17 @@
+@media (max-width: 600px) {
+  .sales-container .dealImg {
+    display: none;
+  }
+  .sales-container .deal-products {
+    width: 100%;
+  }
+  .slick-slider {
+    padding-right: 0 !important;
+  }
+  .sales-container .slick-slide {
+    margin-right: 0rem !important;
+  }
+}
+.sales-container .slick-slide {
+  margin-right: 1rem;
+}
