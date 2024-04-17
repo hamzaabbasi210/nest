@@ -2,9 +2,15 @@ import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer from "../reducers/ProductReducer";
 import { useParams } from "react-router";
+import ProductApiData from "../db";
 const AppContext = createContext();
 
-const Api = "http://localhost:3000/productData";
+const productApiData = ProductApiData.productData;
+
+console.log(productApiData);
+
+const Api = productApiData;
+// const Api = "http://localhost:3000/productData";
 const initialState = {
   isLoading: false,
   isError: false,
@@ -37,9 +43,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "SET_LOADING" });
 
     try {
-      const res = await axios.get(url);
-      const products = await res.data;
-      // console.log(products);
+      // const res = await axios.get(url);
+      // const products = await res.data;
+      const products = productApiData;
+      console.log(products);
       dispatch({ type: "SET_FEATURE_API_DATA", payload: products });
       dispatch({ type: "SET_TOPSELLING_API_DATA", payload: products });
       dispatch({ type: "SET_TRENDING_API_DATA", payload: products });
@@ -64,8 +71,9 @@ const AppProvider = ({ children }) => {
   const getSingleProduct = async (url) => {
     dispatch({ type: "SET_SINGLE_LOADING" });
     try {
-      const res = await axios.get(url);
-      const singleProduct = await res.data;
+      // const res = await axios.get(url);
+      // const singleProduct = await res.data;
+      const singleProduct = productApiData;
       // console.log(singleProduct);
       dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
     } catch (error) {
