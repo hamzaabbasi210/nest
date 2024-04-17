@@ -137,6 +137,7 @@ function SignIn() {
                       value={formField.email}
                       style={{ width: "30vw" }}
                       onChange={onFieldChange}
+                      className="text"
                     />
                   </div>
                   <div className="password relative">
@@ -149,6 +150,7 @@ function SignIn() {
                       type={showPassword === true ? "text" : "password"}
                       style={{ width: "30vw" }}
                       onChange={onFieldChange}
+                      className="text"
                     />
                     {showPassword === true ? (
                       <BiShow
@@ -205,7 +207,7 @@ function SignIn() {
                   <p className="m-auto">
                     not have an account
                     <b>
-                      <Link to="/signup">sign up</Link>
+                      <Link to="/signup"> sign up</Link>
                     </b>
                   </p>
                 </div>

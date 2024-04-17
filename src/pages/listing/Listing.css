@@ -44,16 +44,21 @@
   top: 200px;
   background: #000;
 } */
-@media (max-width:600px) {
-  .Listing-sidebar{
+@media (max-width: 992px) {
+  .Listing-sidebar {
     display: none;
   }
-  .listing-Products{
-    max-width:  100% !important;
+}
+@media (max-width: 600px) {
+  .listing-Products {
+    max-width: 100% !important;
     flex: 0 0 100% !important;
   }
   .listing-content .row {
     padding-right: 0 !important;
     margin-right: 0 !important;
+  }
+  .listing-container {
+    margin-top: 7rem;
   }
 }

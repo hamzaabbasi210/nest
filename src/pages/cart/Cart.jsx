@@ -18,16 +18,16 @@ function cart() {
 
   return (
     <>
-      <div className="cart-container">
+      <div className="cart-container ">
         <div className="container-fluid">
           <div className="bread-crums border-b-2 mt-2">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
-                  <Link href="#">Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li className="breadcrumb-item">
-                  <Link href="#">shop</Link>
+                  <Link to="/listing">shop</Link>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
                   cart
@@ -66,7 +66,7 @@ function cart() {
               <div className="cart-left-container">
                 <div className="cart-items">
                   <div className="cart-table">
-                    <table className="table">
+                    <table className="table border-collapse">
                       <thead className="bg-[#3BB77D] bg-black">
                         <tr className="bg-black">
                           <td className="">Product</td>
@@ -77,9 +77,9 @@ function cart() {
                         </tr>
                       </thead>
 
-                      {isLogin === "true" ? (
-                        <tbody>
-                          {cart.map((val, index) => {
+                      <tbody>
+                        {isLogin === "true" ? (
+                          cart.map((val, index) => {
                             // console.log(val);
                             return (
                               <tr>
@@ -127,28 +127,31 @@ function cart() {
                                 </td>
                               </tr>
                             );
-                          })}
-                        </tbody>
-                      ) : (
-                        <>
-                          <div className="mt-8 font-bold text-4xl  flex flex-col text-red-400">
-                            login to access the cart itemss
-                            <NavLink to="/signin">
-                              <Button
-                                style={{
-                                  backgroundColor: "#3BB77D",
-                                  marginTop: "2rem",
-                                  color: "white",
-                                  fontWeight: "bold",
-                                  padding: ".5rem 2rem",
-                                }}
-                              >
-                                log in{" "}
-                              </Button>
-                            </NavLink>
-                          </div>
-                        </>
-                      )}
+                          })
+                        ) : (
+                          <>
+                            <td colspan="5" className="text-red-400">
+                              {" "}
+                              <div className="mt-8 font-bold text-4xl w-full flex flex-col ">
+                                login to access the cart itemss
+                                <NavLink to="/signin">
+                                  <Button
+                                    style={{
+                                      backgroundColor: "#3BB77D",
+                                      marginTop: "2rem",
+                                      color: "white",
+                                      fontWeight: "bold",
+                                      padding: ".5rem 2rem",
+                                    }}
+                                  >
+                                    log in{" "}
+                                  </Button>
+                                </NavLink>
+                              </div>
+                            </td>
+                          </>
+                        )}
+                      </tbody>
                     </table>
                     {isLogin === "true" && cart.length === 0 && (
                       <>

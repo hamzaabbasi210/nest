@@ -1,6 +1,20 @@
-td{
-    text-align: center;
+td {
+  text-align: center;
 }
-td:first-child{
-    text-align: left;
+td:first-child {
+  text-align: left;
+}
+@media (max-width: 1024px) {
+  .cart-container .col-8 {
+    width: 100%;
+  }
+  .cart-container .col-4 {
+    width: 60%;
+    margin-left: auto;
+  }
+}
+@media (max-width: 992px) {
+  .cart-container {
+    margin-top: 7rem;
+  }
 }

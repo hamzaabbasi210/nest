@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import "./sign_up.css";
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
@@ -58,7 +58,7 @@ function SignUp() {
 
   return (
     <>
-      <div className="signin-container">
+      <div className="signup-container">
         <div className="container-fluid">
           <div className="bread-crums border-b-2 mt-2">
             <nav aria-label="breadcrumb">
@@ -101,6 +101,7 @@ function SignUp() {
                       value={formField.email}
                       style={{ width: "30vw" }}
                       onChange={onFieldChange}
+                      className="text"
                     />
                   </div>
                   <div className="password relative">
@@ -113,6 +114,7 @@ function SignUp() {
                       type={showPassword === true ? "text" : "password"}
                       style={{ width: "30vw" }}
                       onChange={onFieldChange}
+                      className="text"
                     />
                     {showPassword === true ? (
                       <BiShow
@@ -148,6 +150,7 @@ function SignUp() {
                       type={confirmPassword === true ? "text" : "password"}
                       style={{ width: "30vw" }}
                       onChange={onFieldChange}
+                      className="text"
                     />
                     {confirmPassword === true ? (
                       <BiShow

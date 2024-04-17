@@ -1,0 +1,18 @@
+@media (max-width: 992px) {
+  .signup-container {
+    margin-top: 7rem;
+  }
+  .signin-container {
+    margin-top: 7rem;
+  }
+  .signup-container .text,
+  .signin-container .text {
+    width: 50vw !important;
+  }
+}
+@media (max-width: 600px) {
+  .signup-container .text,
+  .signin-container .text {
+    width: 70vw !important;
+  }
+}

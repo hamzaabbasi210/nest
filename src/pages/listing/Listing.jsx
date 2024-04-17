@@ -111,12 +111,12 @@ function ShopListing(props) {
                 </NavLink>
               </li>
               <li>
-                <NavLink
+                {/* <NavLink
                   to={`/cat/${sessionStorage.getItem("cat")}`}
                   style={{ color: "#3BB77D" }}
                 >
                   {sessionStorage.getItem("cat")}&nbsp;&nbsp;/
-                </NavLink>
+                </NavLink> */}
               </li>
               {props.single === false && (
                 <li style={{ color: "#3BB77D" }}>{id}</li>
@@ -138,36 +138,34 @@ function ShopListing(props) {
                     items for you!
                   </div>
                   <div className="filter-btn flex ">
-                    {/* <div className="tab relative">
-                      <Button onClick={() => setPriceDropdown(!priceDropdown)}>
-                        <BiCategory />
-                        Show: 50
-                      </Button>
-                      {priceDropdown === true && (
-                        <div className="account-dropdown z-50 bg-[#FFFFFf] w-[90%] h-[auto]  absolute top-[100%] shadow-md right-4 py-4 ">
-                          <ul className="w-full ">
-                            <li className="pb-2 pl-2  ">&nbsp;&nbsp;50</li>
-                            <li className="pb-2 pl-2  ">&nbsp;&nbsp;100</li>
-                            <li className="pb-2 pl-2  ">&nbsp;&nbsp;150</li>
-                            <li className="pb-2 pl-2  ">&nbsp;&nbsp;200</li>
-                            <li className="pb-2 pl-2  ">&nbsp;&nbsp;all</li>
-                          </ul>
-                        </div>
-                      )}
-                    </div> */}
                     <div className="tab relative">
                       <Button
                         onClick={() => setCategoryDropdown(!categoryDropdown)}
                       >
-                        <TbCategoryPlus />
-                        Show: 50
+                        {id}
                       </Button>
                       {categoryDropdown === true && (
                         <div className="account-dropdown z-50 bg-[#FFFFFf] w-[90%] h-[auto] text-sm  absolute top-[100%] shadow-md right-4 py-4 ">
                           <ul className="w-full ">
-                            {Products.map((val) => {
-                              return val.items.map((val) => {
-                                return <li className="p-2">{val.cat_name}</li>;
+                            {Products.map((val_) => {
+                              console.log(val_.cat_name);
+                              return val_.items.map((val) => {
+                                return (
+                                  <NavLink
+                                    to={`/cat/${val_.cat_name.toLowerCase()}/${val.cat_name
+                                      .split(" ")
+                                      .join("-")}`}
+                                  >
+                                    <li
+                                      className="p-2"
+                                      onClick={() =>
+                                        setCategoryDropdown(!categoryDropdown)
+                                      }
+                                    >
+                                      {val.cat_name}
+                                    </li>
+                                  </NavLink>
+                                );
                               });
                             })}
                             {/* <li className="pb-2 pl-2  ">

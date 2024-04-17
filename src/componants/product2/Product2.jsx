@@ -7,27 +7,33 @@ import { useProductContext } from "../../context/productContext";
 import "./Product2.css";
 import { NavLink } from "react-router-dom";
 import { CartContaxt, useCartContext } from "../../context/cartContext";
-import Alert from "@mui/material/Alert";
-import CheckIcon from "@mui/icons-material/Check";
+// import Alert from "@mui/material/Alert";
+// import CheckIcon from "@mui/icons-material/Check";
+import { toast } from "react-toastify";
 
 function Product2(props) {
   const featureProducts = useProductContext();
   const { addToCart } = useCartContext();
   const [showAlert, setShowAlert] = useState(false);
 
+  const notify = () =>
+    toast.success(props.value.productName + " added to cart");
+
   const addTooCart = () => {
     props.value.quantity = 1;
     addToCart(props.value);
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
+    notify();
+    // setShowAlert(true);
+    // setTimeout(() => {
+    //   setShowAlert(false);
+    // }, 2000);
   };
 
   return (
     <>
       <div className="product2-container">
         <div className="container-flu ">
+          {/*
           <div
             className="addTocartalert fixed top-0 z-50 right-0 transition-opacity duration-5000 ease-in-out"
             style={{
@@ -46,12 +52,12 @@ function Product2(props) {
               {props.value.productName} added to cart
             </Alert>
           </div>
+          */}
           {/* <div className="feature-product-box w-96 "> */}
-
           <NavLink to={`/singleproduct/${props.value.id}`}>
             <div className="featureProductCard relative m-0 shadow-xl py-8 px-4 rounded-lg border border-[#ececec] hover:shadow-2xl-[#3BB77E] ">
               <div
-                className={`badge  py-2  px-3  rounded-tr-3xl rounded-bl-3xl left-0  bg-black absolute top-0 left-0 z-10 rounded-none ${props.value.tag}`}
+                className={`badge  py-2  px-3  rounded-tr-3xl rounded-bl-3xl bg-black absolute top-0 left-0 z-10 rounded-none ${props.value.tag}`}
               >
                 {props.value.tag}
               </div>
