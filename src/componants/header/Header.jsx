@@ -90,9 +90,11 @@ function Header() {
             <NavLink to="/cart">
               <div className="cart-icon flex items-center justify-center relative gap-2 ">
                 <img src={carrt} alt="" className="w-5 " />
-                <div className="absolute flex items-center justify-center left-2 -top-2 bg-[#3BB77E]  rounded-full text-white text-center font-bold w-6 h-6">
-                  {cart.length}
-                </div>
+                {cart !== null && cart !== undefined && (
+                  <div className="absolute flex items-center justify-center left-2 -top-2 bg-[#3BB77E]  rounded-full text-white text-center font-bold w-6 h-6">
+                    {cart.length}
+                  </div>
+                )}
                 {/* <span>cart</span> */}
               </div>
             </NavLink>
@@ -168,9 +170,11 @@ function Header() {
           <NavLink to="/cart">
             <div className="cart-icon flex items-center justify-center relative gap-2 ">
               <img src={carrt} alt="" className="w-5 " />
-              <div className="absolute flex items-center justify-center left-2 -top-2 bg-[#3BB77E]  rounded-full text-white text-center font-bold w-6 h-6">
-                {cart.length}
-              </div>
+              {cart !== null && cart !== undefined && (
+                <div className="absolute flex items-center justify-center left-2 -top-2 bg-[#3BB77E]  rounded-full text-white text-center font-bold w-6 h-6">
+                  {cart.length}
+                </div>
+              )}
               <span>cart</span>
             </div>
           </NavLink>

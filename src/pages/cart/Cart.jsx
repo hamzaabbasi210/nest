@@ -66,7 +66,7 @@ function cart() {
               <div className="cart-left-container">
                 <div className="cart-items">
                   <div className="cart-table">
-                    <table className="table border-collapse">
+                    <table className="table border">
                       <thead className="bg-[#3BB77D] bg-black">
                         <tr className="bg-black">
                           <td className="">Product</td>
@@ -92,7 +92,7 @@ function cart() {
                                         className="w-24 aspect-square "
                                       />
                                     </div>
-                                    <div className="table-info">
+                                    <div className="table-info flex flex-col justify-center">
                                       <h4 className="text-lg">
                                         <NavLink
                                           to={`/singleProduct/${val.id}`}
@@ -107,7 +107,7 @@ function cart() {
                                 <td>
                                   $ {parseInt(val.price.split(",").join(""))}
                                 </td>
-                                <td>
+                                <td className="ml-auto">
                                   <QuantityBox
                                     // amount={amount}
                                     quantitty={val.quantity}
@@ -153,6 +153,20 @@ function cart() {
                         )}
                       </tbody>
                     </table>
+                    <NavLink to="/listing">
+                      <Button
+                        style={{
+                          backgroundColor: "#3BB77D",
+                          marginTop: "2rem",
+                          marginBottom: "2rem",
+                          color: "white",
+                          fontWeight: "bold",
+                          padding: ".5rem 2rem",
+                        }}
+                      >
+                        continue shopping
+                      </Button>
+                    </NavLink>
                     {isLogin === "true" && cart.length === 0 && (
                       <>
                         <div className="w-full py-24  flex items-center justify-center ">

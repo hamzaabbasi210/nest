@@ -1,8 +1,14 @@
 td {
   text-align: center;
+  vertical-align: middle ;
+
 }
 td:first-child {
-  text-align: left;
+  text-align: left;  
+  vertical-align: middle ;
+}
+tbody, td, tfoot, th, thead, tr{
+  border: .5px solid #ccc !important;
 }
 @media (max-width: 1024px) {
   .cart-container .col-8 {

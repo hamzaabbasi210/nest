@@ -44,7 +44,7 @@ function cart_Reducer(state, action) {
   if (action.type === "INCREMENT") {
     let updateQty = state.cart.map((curElem) => {
       if (curElem.id === action.payload) {
-        // console.log(curElem);
+        // console.log(c urElem);
         const newQuantity = curElem.quantity + 1;
         return {
           ...curElem,
@@ -77,20 +77,37 @@ function cart_Reducer(state, action) {
       cart: updateQty,
     };
   }
+  // if (action.type === "CART_TOTAL_AMOUNT") {
+  //   if (state.cart !== null || state.cart !== undefined) {
+  //     let total_price = state.cart.reduce((accum, curVal) => {
+  //       let { price, quantity } = curVal;
+  //       accum = accum + price * quantity;
+
+  //       return accum;
+  //     }, 0);
+
+  //     return {
+  //       ...state,
+  //       total_amount: total_price,
+  //     };
+  //   }
+  // }
   if (action.type === "CART_TOTAL_AMOUNT") {
-    if (state.cart !== null) {
-      let total_price = state.cart.reduce((accum, curVal) => {
+    let total_price = 0;
+    if (Array.isArray(state.cart) && state.cart.length > 0) {
+      total_price = state.cart.reduce((accum, curVal) => {
         let { price, quantity } = curVal;
         accum = accum + price * quantity;
-
         return accum;
       }, 0);
-
-      return {
-        ...state,
-        total_amount: total_price,
-      };
     }
+    return {
+      ...state,
+      total_amount: total_price,
+    };
   }
+  // Default case
+  return state;
 }
+
 export default cart_Reducer;

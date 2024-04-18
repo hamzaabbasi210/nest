@@ -12,7 +12,7 @@ const CartContaxt = createContext();
 
 const getLocalData = () => {
   let newCartData = localStorage.getItem("cartData");
-  if (newCartData === "undefined") {
+  if (newCartData === "null" || newCartData === "undefined") {
     return [];
   } else {
     return JSON.parse(newCartData);
@@ -35,7 +35,7 @@ const CartProvider = ({ children }) => {
     console.log(id);
   };
   const emptyCart = () => {
-    dispatch({ type: "EMPTY_CART" });
+    dispatch({ type: "EMPTY_CART " });
   };
 
   const decrement = (id) => {
@@ -50,11 +50,6 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "CART_TOTAL_AMOUNT" });
     localStorage.setItem("cartData", JSON.stringify(state.cart));
   }, [state.cart]);
-  // add data to localStorage
-
-  // useEffect(() => {
-  //   localStorage.setItem("cartData", JSON.stringify(state.cart));
-  // }, []);
 
   return (
     <CartContaxt.Provider

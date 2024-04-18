@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import { BiHide, BiShow } from "react-icons/bi";
 import { Button } from "@mui/material";
 import { FcGoogle } from "react-icons/fc";
+// import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,} from "firebase/auth";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -14,6 +15,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 import { useLoginContext } from "../../context/loginContext";
+import { app } from "../../firebase";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,7 +27,9 @@ function SignIn() {
   });
 
   let history = useNavigate();
-  const auth = getAuth();
+  // const auth = getAuth();
+  const auth = getAuth(app);
+
   const googleProvider = new GoogleAuthProvider();
 
   const signIn = () => {
@@ -34,6 +38,7 @@ function SignIn() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        // ...
         setLoader(false);
         setformField({
           email: "",

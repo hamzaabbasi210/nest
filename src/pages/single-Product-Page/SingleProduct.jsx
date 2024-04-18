@@ -146,7 +146,7 @@ function SingleProduct() {
   console.log(curProduct);
   return (
     <>
-      <div className="single-product-container  mb-56">
+      <div className="single-product-container  mb-12">
         <div className="container-fluid">
           <div className="bread-crums border-b-2 mt-2">
             <nav aria-label="breadcrumb">

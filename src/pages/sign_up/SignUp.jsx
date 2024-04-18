@@ -20,10 +20,12 @@ function SignUp() {
     confirmPassword: "",
   });
 
-  const auth = getAuth(app);
+  // const auth = getAuth(app);
+  const auth = getAuth();
 
   const signUp = () => {
     setLoader(true);
+
     createUserWithEmailAndPassword(auth, formField.email, formField.password)
       .then((userCredential) => {
         // Signed up
@@ -41,6 +43,24 @@ function SignUp() {
         const errorMessage = error.message;
         // ..
       });
+
+    // createUserWithEmailAndPassword(auth, formField.email, formField.password)
+    //   .then((userCredential) => {
+    //     // Signed up
+    //     const user = userCredential.user;
+    //     setLoader(false);
+    //     setformField({
+    //       email: "",
+    //       password: "",
+    //       confirmPassword: "",
+    //     });
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // ..
+    //   });
   };
 
   const onFieldChange = (e) => {
