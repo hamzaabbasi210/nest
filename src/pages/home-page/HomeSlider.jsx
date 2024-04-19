@@ -14,7 +14,7 @@ function HomeSlider() {
     slidesToScroll: 1,
     arrows: false,
     // centerMode: true,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3500,
     fade: true,
     adaptiveHeight: true,
