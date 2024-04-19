@@ -33,7 +33,7 @@ function Header() {
   };
   return (
     <>
-      <header className="container-fluid  bg-white flex justify-between item-center gap-7  py-4 m-auto w-full px-8 boder ">
+      <header className="container-fluid  bg-white flex justify-between item-center gap-7 m-auto w-full px-8 boder ">
         <div className="header-logo">
           <NavLink to="/">
             <img src={logo} alt="" className="w-[10rem] !important" />
