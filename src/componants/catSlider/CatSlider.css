@@ -53,7 +53,7 @@
     background: ffffff;
     color: #3bb77e;
     position: absolute;
-    left: 60px;
+    left: 50px;
     font-size: 2rem;
   }
   .slick-next:before {
@@ -62,15 +62,19 @@
     background: ffffff;
     color: #3bb77e;
     position: absolute;
-    right: 21px;
+    right: 33px;
     font-size: 2rem;
-    top: 70px;
+    top: 31px;
   }
   .slide-items .slick-prev::before {
-    top: 66px;
+    top: 24px;
   }
   .slide-items {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    margin-right: ;
   }
+  .category-slider-container .slick-slider {
+    margin:0 -15px;
+}
 }
