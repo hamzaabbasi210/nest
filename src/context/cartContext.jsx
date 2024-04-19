@@ -1,12 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer from "../reducers/cart_Reducer";
-import axios from "axios";
 
 const CartContaxt = createContext();
 
@@ -21,7 +14,6 @@ const getLocalData = () => {
 
 const initialState = {
   cart: getLocalData(),
-  // cart: [],
   total_amount: 0,
 };
 
@@ -35,7 +27,7 @@ const CartProvider = ({ children }) => {
     console.log(id);
   };
   const emptyCart = () => {
-    dispatch({ type: "EMPTY_CART " });
+    dispatch({ type: "EMPTY_CART" });
   };
 
   const decrement = (id) => {

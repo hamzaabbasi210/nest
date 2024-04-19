@@ -1,14 +1,22 @@
 td {
   text-align: center;
-  vertical-align: middle ;
-
+  vertical-align: middle;
 }
 td:first-child {
-  text-align: left;  
-  vertical-align: middle ;
+  text-align: left;
+  vertical-align: middle;
 }
-tbody, td, tfoot, th, thead, tr{
-  border: .5px solid #ccc !important;
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border: 0.5px solid #ccc !important;
+}
+table {
+  border-radius: 10px;
 }
 @media (max-width: 1024px) {
   .cart-container .col-8 {
@@ -22,5 +30,27 @@ tbody, td, tfoot, th, thead, tr{
 @media (max-width: 992px) {
   .cart-container {
     margin-top: 7rem;
+  }
+}
+@media (max-width: 600px) {
+  .cart-container .col-4 {
+    width: 100%;
+  }
+  .hide-on-mobile td:first-child h4 {
+    font-size: 1rem;
+  }
+  .hide-on-mobile td:first-child img,
+  .cart-product-rating {
+    display: none;
+  }
+  .hide-on-mobile .table-items .img {
+    border: none !important;
+  }
+  .hide-on-mobile .table-items {
+    gap: 0;
+  }
+  .hide-on-mobile td:nth-child(4),
+  .hide-on-mobile th:nth-child(4) {
+    display: none;
   }
 }

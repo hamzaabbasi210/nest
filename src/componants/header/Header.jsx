@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/logo.svg";
-import Dropdown from "../SelectDropdown/Dropdown";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import axios from "axios";
@@ -26,45 +25,9 @@ function Header() {
   const [accountDropdown, setAccountDropdown] = useState(false);
   const { cart } = useCartContext();
   const { isLogin, SignOut } = useLoginContext();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [serchOpen, setSerchOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
-  const [categories, setCategories] = useState([
-    "All categories",
-    "Dairy Milk",
-    "bread & fruit",
-    "fresh food",
-    "vegetable",
-    "baking material",
-    "fast food",
-    "pet food & toy",
-    "fresh food",
-    "clothing & beauty",
-    "Wines & Drink",
-  ]);
-
-  const countryList = [];
-  useEffect(() => {
-    getCountry();
-  }, []);
-
-  const getCountry = async () => {
-    try {
-      await axios
-        .get("https://countriesnow.space/api/v0.1/countries/")
-        .then((res) => {
-          if (res !== null) {
-            res.data.data.map((val, ind) => {
-              countryList.push(val.country);
-              //   console.log(val.country);
-            });
-          }
-        });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
   const closeNav = () => {
     setNavOpen(false);
   };
@@ -114,42 +77,17 @@ function Header() {
               />
             </div>
           )}
-          <div className="dropDown">
-            <Dropdown
-              categoriesItems={categories}
-              placeholder={"all categories"}
-            />
-          </div>
-          <span className="mx-4 divider">|</span>
-          <div className="inp-box w-[85%] flex items-center z-20">
+
+          <div className="inp-box w-[100%]  flex items-center z-20">
             <input
               type="search"
-              className="w-full border-none outline-none p- h-[40px] "
+              className="w-full border-none px-4 outline-none p- h-[40px] "
               placeholder="search items here..."
             />
             <div className="search-icon text-2xl text-[#ccc]">
               <IoSearchOutline />
             </div>
           </div>
-          {windowWidth < 992 && (
-            <div className="location-sec shadow-md w-[200px] max-h-[45px] flex items-center  gap-5 pl-8 relative text-center">
-              <FaLocationDot />
-              <Dropdown
-                className="dropDown text-[#3BB77E]"
-                categoriesItems={countryList}
-                placeholder={"location"}
-              />
-            </div>
-          )}
-        </div>
-
-        <div className="location-sec shadow-md w-[200px] max-h-[45px] flex items-center  gap-5 pl-8 relative text-center">
-          <FaLocationDot />
-          <Dropdown
-            className="dropDown text-[#3BB77E]"
-            categoriesItems={countryList}
-            placeholder={"location"}
-          />
         </div>
 
         <div className="header-icons flex items-center borer h-[45px] gap-6 ml-auto font-thin ">

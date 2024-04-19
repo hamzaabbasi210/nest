@@ -39,7 +39,7 @@ function cart() {
             <div className="top flex justify-between">
               <div className="cart-heading">
                 <div className="hd">your cart</div>
-                <p>
+                <p className="mt-4">
                   There are{" "}
                   <span className="text-[#3BB77D] font-bold">
                     {" "}
@@ -55,6 +55,7 @@ function cart() {
                     color: "white",
                     fontWeight: "bold",
                     padding: ".7rem 2rem",
+                    fontSize: "%",
                   }}
                   onClick={emptyCart}
                 >
@@ -66,14 +67,14 @@ function cart() {
               <div className="cart-left-container">
                 <div className="cart-items">
                   <div className="cart-table">
-                    <table className="table border">
-                      <thead className="bg-[#3BB77D] bg-black">
-                        <tr className="bg-black">
-                          <td className="">Product</td>
-                          <td>Unit Price</td>
-                          <td>Quantity</td>
-                          <td>Subtotal</td>
-                          <td>Remove</td>
+                    <table className="table rounded-full">
+                      <thead className="">
+                        <tr className="bg-black hide-on-mobile">
+                          <th className="">Product</th>
+                          <th>Unit Price</th>
+                          <th>Quantity</th>
+                          <th>Subtotal</th>
+                          <th>Remove</th>
                         </tr>
                       </thead>
 
@@ -82,50 +83,57 @@ function cart() {
                           cart.map((val, index) => {
                             // console.log(val);
                             return (
-                              <tr>
-                                <td>
-                                  <div className="table-items flex item-center gap-8">
-                                    <div className="img border rounded">
-                                      <img
-                                        src={val.catImg}
-                                        alt=""
-                                        className="w-24 aspect-square "
-                                      />
+                              <>
+                                <tr className="hide-on-mobile">
+                                  <td>
+                                    <div className="table-items flex item-center gap-8">
+                                      <div className="img border rounded">
+                                        <img
+                                          src={val.catImg}
+                                          alt=""
+                                          className="w-24 aspect-square "
+                                        />
+                                      </div>
+                                      <div className="table-info flex flex-col justify-center">
+                                        <h4 className="text-lg">
+                                          <NavLink
+                                            to={`/singleProduct/${val.id}`}
+                                          >
+                                            {val.productName}
+                                          </NavLink>{" "}
+                                        </h4>
+                                        <div className="cart-product-rating">
+                                          <Rating
+                                            value={parseInt(val.rating)}
+                                          />
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="table-info flex flex-col justify-center">
-                                      <h4 className="text-lg">
-                                        <NavLink
-                                          to={`/singleProduct/${val.id}`}
-                                        >
-                                          {val.productName}
-                                        </NavLink>{" "}
-                                      </h4>
-                                      <Rating value={parseInt(val.rating)} />
-                                    </div>
-                                  </div>
-                                </td>
-                                <td>
-                                  $ {parseInt(val.price.split(",").join(""))}
-                                </td>
-                                <td className="ml-auto">
-                                  <QuantityBox
-                                    // amount={amount}
-                                    quantitty={val.quantity}
-                                    setIncrese={() => increment(val.id)}
-                                    setDecrese={() => decrement(val.id)}
-                                  />
-                                </td>
-                                {/* <td>${totalPrice.toFixed(2)}</td> */}
-                                <td>
-                                  $
-                                  {val.price.split(",").join("") * val.quantity}
-                                </td>
-                                <td>
-                                  <FaRegTrashAlt
-                                    onClick={() => removeItem(val.id)}
-                                  />
-                                </td>
-                              </tr>
+                                  </td>
+                                  <td>
+                                    $ {parseInt(val.price.split(",").join(""))}
+                                  </td>
+                                  <td className="ml-auto">
+                                    <QuantityBox
+                                      // amount={amount}
+                                      quantitty={val.quantity}
+                                      setIncrese={() => increment(val.id)}
+                                      setDecrese={() => decrement(val.id)}
+                                    />
+                                  </td>
+                                  {/* <td>${totalPrice.toFixed(2)}</td> */}
+                                  <td>
+                                    $
+                                    {val.price.split(",").join("") *
+                                      val.quantity}
+                                  </td>
+                                  <td>
+                                    <FaRegTrashAlt
+                                      onClick={() => removeItem(val.id)}
+                                    />
+                                  </td>
+                                </tr>
+                              </>
                             );
                           })
                         ) : (
@@ -153,20 +161,22 @@ function cart() {
                         )}
                       </tbody>
                     </table>
-                    <NavLink to="/listing">
-                      <Button
-                        style={{
-                          backgroundColor: "#3BB77D",
-                          marginTop: "2rem",
-                          marginBottom: "2rem",
-                          color: "white",
-                          fontWeight: "bold",
-                          padding: ".5rem 2rem",
-                        }}
-                      >
-                        continue shopping
-                      </Button>
-                    </NavLink>
+                    {isLogin === "true" && cart.length > 0 && (
+                      <NavLink to="/listing">
+                        <Button
+                          style={{
+                            backgroundColor: "#3BB77D",
+                            marginTop: "2rem",
+                            marginBottom: "2rem",
+                            color: "white",
+                            fontWeight: "bold",
+                            padding: ".5rem 2rem",
+                          }}
+                        >
+                          continue shopping
+                        </Button>
+                      </NavLink>
+                    )}
                     {isLogin === "true" && cart.length === 0 && (
                       <>
                         <div className="w-full py-24  flex items-center justify-center ">

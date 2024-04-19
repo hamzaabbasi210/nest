@@ -92,20 +92,43 @@ function cart_Reducer(state, action) {
   //     };
   //   }
   // }
+  // if (action.type === "CART_TOTAL_AMOUNT") {
+  //   let total_price = 0;
+  //   if (Array.isArray(state.cart) && state.cart.length > 0) {
+  //     total_price = state.cart.reduce((accum, curVal) => {
+  //       let { price, quantity } = curVal;
+  //       accum = accum + price * quantity;
+  //       return accum;
+  //     }, 0);
+  //   }
+  //   console.log(total_price);
+  //   return {
+  //     ...state,
+  //     total_amount: total_price,
+  //   };
+  // }
+
   if (action.type === "CART_TOTAL_AMOUNT") {
     let total_price = 0;
     if (Array.isArray(state.cart) && state.cart.length > 0) {
       total_price = state.cart.reduce((accum, curVal) => {
         let { price, quantity } = curVal;
-        accum = accum + price * quantity;
+        // Ensure price is converted to a number before performing calculations
+        price = parseFloat(price.replace("$", "").replace(",", ""));
+        // Check if price is a valid number
+        if (!isNaN(price)) {
+          accum = accum + price * quantity;
+        }
         return accum;
       }, 0);
     }
+    console.log(total_price);
     return {
       ...state,
       total_amount: total_price,
     };
   }
+
   // Default case
   return state;
 }
