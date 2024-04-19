@@ -10,4 +10,7 @@
   .heading-content ul li {
     font-size: 10px;
   }
+  .feature-product-container{
+    padding: 0;
+  }
 }

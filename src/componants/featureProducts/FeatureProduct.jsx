@@ -61,7 +61,7 @@ function FeatureProduct() {
               </div>
             </div>
           </div>
-          <div className="feature-product2  mt-12">
+          <div className="feature-product2  mt-8">
             {showProducts === 1 &&
               dalsAndPulses.map((val) => {
                 return val.products.map((val) => {
