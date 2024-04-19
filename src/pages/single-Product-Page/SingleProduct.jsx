@@ -250,20 +250,21 @@ function SingleProduct() {
                   </div>
                   <div className="add-to-cart flex items-center gap-4">
                     <div className="quantity w-[6rem] flex border rounded">
-                      <input
-                        type="number"
-                        className=" py-2 text-center w-[80%]"
-                        value={inpVal}
-                        onChange={(e) => setInpVal(e.target.value)}
+                      <QuantityBox
+                        quantitty={curProduct.quantity}
+                        setIncrese={() => increment(curProduct.id)}
+                        setDecrese={() => decrement(curProduct.id)}
+                        // quantitty={curProduct.quantity}
+                        // setIncrese={() => increment(curProduct.id)}
+                        // setDecrese={() => decrement(curProduct.id)}
                       />
+
                       <div className="arrows flex flex-col items-center justify-center">
-                        {/* <FaAngleUp onClick={increment} />
-                            <FaAngleDown onClick={decrement} /> */}
-                        <QuantityBox
+                        {/* <QuantityBox
                           quantitty={curProduct.quantity}
                           setIncrese={() => increment(curProduct.id)}
                           setDecrese={() => decrement(curProduct.id)}
-                        />
+                        /> */}
                       </div>
                     </div>
                     <div className="add-to-cart-btn">

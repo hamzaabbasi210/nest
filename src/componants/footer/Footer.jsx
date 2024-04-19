@@ -13,7 +13,7 @@ function Footer() {
   return (
     <>
       <Services />
-      <div className="footer-container mb-48 mt-12">
+      <div className="footer-container mt-12">
         <div className="container-fluid">
           <div className="footer-content">
             <div className="row footer-data ">

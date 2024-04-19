@@ -8,6 +8,7 @@ import Product2 from "../../componants/product2/Product2";
 import { useProductContext } from "../../context/productContext";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
+import ClickAwayListener from "react-click-away-listener";
 
 function ShopListing(props) {
   const { Products } = useProductContext();
@@ -69,36 +70,6 @@ function ShopListing(props) {
     setCatProductsData(list3);
   }, [props.single, id, Products]);
 
-  // useEffect(() => {
-  //   if (id) {
-  //     Products.map((val) => {
-  //       if (
-  //         val.cat_name &&
-  //         val.cat_name.toLowerCase() === id &&
-  //         id.toLowerCase()
-  //       ) {
-  //         val.items.length !== 0 &&
-  //           val.items.map((val) => {
-  //             val.products.length !== 0 &&
-  //               val.products.map((val) => {
-  //                 itemArr.push(val);
-  //               });
-  //           });
-  //       } else {
-  //         val.items.map((val) => {
-  //           val.products.map((val) => {
-  //             itemArr.push(val);
-  //           });
-  //         });
-  //       }
-  //     });
-  //     const list2 = itemArr.filter(
-  //       (item, index) => itemArr.indexOf(item) === index
-  //     );
-  //     setCatProductsData(list2);
-  //   }
-  // }, [props.single, id, Products]);
-
   const filterByPrice = (minValue, maxValue) => {
     if (id) {
       Products.length !== 0 &&
@@ -146,6 +117,11 @@ function ShopListing(props) {
     }
   };
 
+  const handleClickAway = () => {
+    console.log("Maybe close the popup");
+    setCategoryDropdown(false);
+  };
+
   return (
     <>
       {catProductsData.length > 0 && (
@@ -173,7 +149,7 @@ function ShopListing(props) {
                   <Sidebar filterByPrice={filterByPrice} range={true} />
                 </div>
                 <div className="col-9 listing-Products mt-4">
-                  <div className="top-strip flex justify-between flex-wrap">
+                  <div className="top-strip flex justify-between flex-wrap gap-4">
                     <div className="result">
                       We found{" "}
                       <span className="text-success font-bold">
@@ -182,38 +158,52 @@ function ShopListing(props) {
                       items for you!
                     </div>
                     <div className="filter-btn flex ">
-                      <div className="tab relative">
+                      <div className="tab relative ">
                         <Button
                           onClick={() => setCategoryDropdown(!categoryDropdown)}
+                          style={{
+                            border: "1px solid #3BB77D",
+                            fontWeight: "bold",
+                            color: "#3BB77D",
+                          }}
                         >
-                          {id}
+                          {id ? id : "filter by brand"}
                         </Button>
                         {categoryDropdown === true && (
-                          <div className="account-dropdown z-50 bg-[#FFFFFf] w-[90%] h-[auto] text-sm  absolute top-[100%] shadow-md right-4 py-4 ">
-                            <ul className="w-full ">
-                              {Products.map((val_) => {
-                                console.log(val_.cat_name);
-                                return val_.items.map((val) => {
-                                  return (
-                                    <NavLink
-                                      to={`/cat/${val_.cat_name.toLowerCase()}/${val.cat_name
-                                        .split(" ")
-                                        .join("-")}`}
-                                    >
-                                      <li
-                                        className="p-2"
-                                        onClick={() =>
-                                          setCategoryDropdown(!categoryDropdown)
+                          <ClickAwayListener onClickAway={handleClickAway}>
+                            <div className="account-dropdown z-50 bg-[#FFFFFf] w-[90%] h-[auto] text-sm  absolute top-[100%] shadow-md right-4 py-4 ">
+                              <ul className="w-full ">
+                                {Products.map((val_) => {
+                                  console.log(val_.cat_name);
+                                  return val_.items.map((val) => {
+                                    return (
+                                      <NavLink
+                                        to={`/cat/${val_.cat_name.toLowerCase()}/${val.cat_name
+                                          .split(" ")
+                                          .join("-")}`}
+                                        className={({ isActive }) =>
+                                          isActive
+                                            ? "text-[#3BB77D] font-bold"
+                                            : "text-black"
                                         }
                                       >
-                                        {val.cat_name}
-                                      </li>
-                                    </NavLink>
-                                  );
-                                });
-                              })}
-                            </ul>
-                          </div>
+                                        <li
+                                          className="p-2"
+                                          onClick={() =>
+                                            setCategoryDropdown(
+                                              !categoryDropdown
+                                            )
+                                          }
+                                        >
+                                          {val.cat_name}
+                                        </li>
+                                      </NavLink>
+                                    );
+                                  });
+                                })}
+                              </ul>
+                            </div>
+                          </ClickAwayListener>
                         )}
                       </div>
                     </div>

@@ -1,12 +1,11 @@
 import React from "react";
 import Slider from "react-slick";
-
-import "./CatSlider.css"; // Import CSS file for styling
-import { useProductContext } from "../../context/productContext"; // Import product context hook
-import { NavLink } from "react-router-dom"; // Import NavLink for navigation
+import "./CatSlider.css";
+import { useProductContext } from "../../context/productContext";
+import { NavLink } from "react-router-dom";
 
 function CatSlider() {
-  const { Products } = useProductContext(); // Fetch products data from context
+  const { Products } = useProductContext();
 
   // Slick slider settings
   var settings = {
@@ -45,46 +44,42 @@ function CatSlider() {
   };
 
   return (
-    <div className="category-slider-container">
+    <div className="category-slider-container ">
       <div className="container-fluid ">
         <h1 className="hd title">Feature Categories</h1> {/* Title */}
-        <div className="slide-items mt-12 ">
+        <div className="slide-items my-4 ">
           {" "}
-          {/* Container for slider */}
           <Slider {...settings} className="">
             {" "}
-            {/* Slick slider */}
             {Products.flatMap((val_) => {
-              // Map through products data
               return val_.items.flatMap((val) => {
-                // Map through items within each category
                 return (
                   <div key={val.cat_name}>
                     {" "}
-                    {/* Unique key for each item */}
                     <NavLink
                       to={`/cat/${val_.cat_name.toLowerCase()}/${val.cat_name
                         .split(" ")
                         .join("-")
-                        .toLowerCase()}`} // Navigation link
+                        .toLowerCase()}`}
                     >
-                      <div className="row bg-[#fffceb]">
+                      <div
+                        className={`row`}
+                        style={{ backgroundColor: `${val.background}` }}
+                      >
                         {" "}
-                        {/* Item container */}
                         <div className="col w-8">
                           <img
                             src={val.catImage}
                             alt=""
-                            className="mix-blend-multiply w-24 aspect-square mb-4" // Image
+                            className="mix-blend-multiply w-24  mb-2"
+                            style={{ aspectRatio: "3/2" }}
                           />
                           <h1>
-                            {val.cat_name.length > 14
-                              ? val.cat_name.substr(0, 8)
+                            {val.cat_name.length > 12
+                              ? val.cat_name.substr(0, 12)
                               : val.cat_name + "..."}{" "}
-                            {/* Category name */}
                           </h1>
                           <p>{val.products.length} items</p>{" "}
-                          {/* Number of items */}
                         </div>
                       </div>
                     </NavLink>

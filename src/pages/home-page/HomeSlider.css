@@ -94,8 +94,11 @@
     font-size: 12px;
   }
   .slick-dots li button:before {
-    /* font-size: 10px; */
-    top: 12px;
+    font-size: 10px;
+    /* top: 12px; */
+  }
+  .slick-dots li {
+    margin: 0; /* Set margin to zero */
   }
   .slider-container {
     margin: 5rem 0 0 !important;

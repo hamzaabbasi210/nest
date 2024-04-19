@@ -49,18 +49,20 @@ function cart() {
                 </p>
               </div>
               <div className="clear-cart-btn">
-                <Button
-                  style={{
-                    backgroundColor: "#3BB77D",
-                    color: "white",
-                    fontWeight: "bold",
-                    padding: ".7rem 2rem",
-                    fontSize: "%",
-                  }}
-                  onClick={emptyCart}
-                >
-                  Clear cart
-                </Button>
+                {cart.length !== 0 && (
+                  <Button
+                    style={{
+                      backgroundColor: "#3BB77D",
+                      color: "white",
+                      fontWeight: "bold",
+                      padding: ".7rem 2rem",
+                      fontSize: "%",
+                    }}
+                    onClick={emptyCart}
+                  >
+                    Clear cart
+                  </Button>
+                )}
               </div>
             </div>
             <div className="col-8">
@@ -115,13 +117,11 @@ function cart() {
                                   </td>
                                   <td className="ml-auto">
                                     <QuantityBox
-                                      // amount={amount}
                                       quantitty={val.quantity}
                                       setIncrese={() => increment(val.id)}
                                       setDecrese={() => decrement(val.id)}
                                     />
                                   </td>
-                                  {/* <td>${totalPrice.toFixed(2)}</td> */}
                                   <td>
                                     $
                                     {val.price.split(",").join("") *

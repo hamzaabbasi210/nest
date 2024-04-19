@@ -5,7 +5,7 @@ import banner3 from "../../assets/banner3.jpg";
 function Banner() {
   return (
     <>
-      <div className="banner-container">
+      <div className="banner-container mt-12">
         <div className="container-fluid">
           <div
             className="row  "

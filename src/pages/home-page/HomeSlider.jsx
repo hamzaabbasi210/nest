@@ -8,13 +8,13 @@ import { BsSend } from "react-icons/bs";
 
 function HomeSlider() {
   var settings = {
-    dots: false,
+    dots: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     // centerMode: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3500,
     fade: true,
     adaptiveHeight: true,
@@ -44,9 +44,6 @@ function HomeSlider() {
                     <Button className="rounded-">subscribe</Button>
                   </div>
                 </div>
-                <div className="inp-bttn ">
-                  <Button>subscribe</Button>
-                </div>
               </div>
             </div>
             <div className="slide-items relative rounded-lg">
@@ -69,9 +66,6 @@ function HomeSlider() {
                   <div className="inp-btn">
                     <Button className="rounded-">subscribe</Button>
                   </div>
-                </div>
-                <div className="inp-bttn ">
-                  <Button>subscribe</Button>
                 </div>
               </div>
             </div>

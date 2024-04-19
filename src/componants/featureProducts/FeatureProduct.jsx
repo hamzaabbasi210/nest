@@ -46,7 +46,7 @@ function FeatureProduct() {
                         <li
                           className={
                             val_.id === activeProduct
-                              ? "text-sm font-thin text-[#3BB77E]"
+                              ? "text-sm font-bold text-[#3BB77E]"
                               : "text-sm font-thin "
                           }
                         >

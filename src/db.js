@@ -8,6 +8,7 @@ const ProductApiData = {
       "items": [
         {
           "cat_name": "dals and pulses",
+          "background": "#F2FCE4",
           "id": 1,
           "catImage":"https://www.aaswadexports.com/images/prod/dal-pulses/d1.jpg",
           "products": [
@@ -231,6 +232,7 @@ const ProductApiData = {
         },
         {
           "cat_name": "Ghee & Oils",
+          "background": "#FFFCEB",
           "id": 2,
           "catImage":"https://storage.googleapis.com/shy-pub/267366/1679567111088_EdibleOilsGhee.jpeg",
           "products": [
@@ -390,6 +392,7 @@ const ProductApiData = {
         },
         {
           "cat_name": "Atta & Flours",
+          "background": "#FEEFEA",
           "id": 3,
           "catImage":"https://i0.wp.com/vrmshoppe.com/wp-content/uploads/2021/06/Webp.net-resizeimage-4fdgfdg.jpg?resize=300%2C300&ssl=1",
           "products": [
@@ -577,6 +580,7 @@ const ProductApiData = {
         },
         {
           "cat_name": "masalas spices",
+          "background": "#ECFFEC",
           "id": 4,
           "catImage":"https://cdn.shopify.com/s/files/1/0263/3701/7946/products/Garam-Masala_533x.jpg?v=1595843574",
           "products": [
@@ -732,6 +736,7 @@ const ProductApiData = {
         },
         {
           "cat_name": "Rice & Rice Products",
+          "background": "#FFF3EB",
           "id": 5,
           "catImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC5C7WccANpaJKOsmOwxdwzHR4I_byIZ1kWEfCGX3BdQ&s",
           "products": [
@@ -866,6 +871,7 @@ const ProductApiData = {
       "items": [
         {
           "cat_name": "Mobiles & Tablets",
+          "background": "#FFF3FF",
           "id": 6,
           "catImage":"https://fazalsons.pk/wp-content/uploads/2022/06/Untitled-design-1-1-1.png",
           "products": [
@@ -1002,6 +1008,7 @@ const ProductApiData = {
         },
         {
           "cat_name": "TV & Speaker",
+          "background": "#F2FCE4",
           "id": 7,
           "catImage":"https://www.sony.com/image/ccbe548efa94995a9c034d96a4a6acbb?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
           "products": [
@@ -1109,6 +1116,7 @@ const ProductApiData = {
       "items": [
         {
           "cat_name": "Men Western Wear",
+          "background": "#FEEFEA",
           "id": 8,
           "catImage":"https://chasevalue.pk/cdn/shop/products/IMG_5914_b53fcb92-a0e3-4b5e-9d1c-369a44b3241d_grande.jpg?v=1647517376",
           "products": [
@@ -1242,6 +1250,7 @@ const ProductApiData = {
         },
         {
           "cat_name": "Women Western Wear",
+          "background": "#FFFCEB",
           "id": 9,
           "catImage":"https://www.limelight.pk/cdn/shop/files/menu_women_western_co-ords.png?v=10293745067462037540",
           "products": [

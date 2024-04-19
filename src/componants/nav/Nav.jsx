@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from "react";
 import { useProductContext } from "../../context/productContext";
 import Dropdown from "../SelectDropdown/Dropdown";
 import { FaAngleLeft } from "react-icons/fa6";
+import ClickAwayListener from "react-click-away-listener";
 
 function Nav({ openNav, closenav }) {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
@@ -28,6 +29,10 @@ function Nav({ openNav, closenav }) {
       }
     });
   }, []);
+  const handleClickAway = () => {
+    console.log("Maybe close the popup");
+    setCategoryDropdown(false);
+  };
 
   return (
     <>
@@ -54,23 +59,25 @@ function Nav({ openNav, closenav }) {
               )}
             </Button>
             {categoryDropdown === true && (
-              <div className="category-dropdown absolute top-[100%] w-full shadow-md  bg-[#FFFFFF] z-50 overflow-hidden">
-                <div className="row gap- border border-[#3BB77D]">
-                  {categoryData.map((val, index) => {
-                    return (
-                      <>
-                        <div
-                          key={index}
-                          className="col-6 flex gap-2 my-4 border py-2 "
-                        >
-                          <img src={val.img} alt="" className="w-8" />
-                          <p>{val.title}</p>
-                        </div>
-                      </>
-                    );
-                  })}
+              <ClickAwayListener onClickAway={handleClickAway}>
+                <div className="category-dropdown absolute top-[100%] w-full shadow-md  bg-[#FFFFFF] z-50 overflow-hidden">
+                  <div className="row gap- border border-[#3BB77D]">
+                    {categoryData.map((val, index) => {
+                      return (
+                        <>
+                          <div
+                            key={index}
+                            className="col-6 flex gap-2 my-4 border py-2 "
+                          >
+                            <img src={val.img} alt="" className="w-8" />
+                            <p>{val.title}</p>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              </ClickAwayListener>
             )}
           </div>
           <div
